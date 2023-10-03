@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Planos de aula</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #281a4e;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 100px;
+            background-color: #08084b;
+            padding: 20px;
+            border-radius: 5px;
+            color: #FFFFF0;
+        }
+
+        .form-group label {
+            color: #FFFFF0;
+        }
+
+        h2 {
+            font-size: 250%;
+            text-align: center;
+        }
+
+        .btn-logout {
+            background-color: #FFFFF0;
+            color: #000080;
+            margin-top: 10px;
+            border-color: #000080;
+        }
+
+        .btn-new-plan {
+            background-color: #FFFFF0;
+            color: #000080;
+            margin-top: 10px;
+            margin-left: 0.5cm;
+            border-color: #000080;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .username {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .table-container {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group select {
+            width: 100%;
+        }
+
+        thead th {
+            color: #FFFFFF;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="user-info">
+        <span>Usuário: {{ nome_usuario }}</span>
+        <a href="{{ url_for('novoplano') }}" class="btn btn-new-plan">Novo Plano</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
+    </div>
+      
+    <div class="container">
+        <h2>E.E. BAIRRO CRUZEIRO</h2>
+        
+        <div class="form-group">
+            <label for="professor-filter">Professor:</label>
+            <select id="professor-filter" name="professor-filter" class="filtro">
+                <option value="">Todos</option>
+                {% for professor in professores %}
+                <option value="{{ professor }}">{{ professor }}</option>
+                {% endfor %}
+            </select>
+        
+            <label for="turma-filter">Turma:</label>
+            <select id="turma-filter" name="turma-filter" class="filtro">
+                <option value="">Todas</option>
+                {% for turma in turmas %}
+                <option value="{{ turma }}">{{ turma }}</option>
+                {% endfor %}
+            </select>
+        
+            <label for="componente-filter">Componente Curricular:</label>
+            <select id="componente-filter" name="componente-filter" class="filtro">
+                <option value="">Todos</option>
+                {% for componente in componentes %}
+                <option value="{{ componente }}">{{ componente }}</option>
+                {% endfor %}
+            </select>
+        
+            <label for="data-filter">Data de Início:</label>
+            <select id="data-filter" name="data-filter" class="filtro">
+                <option value="">Todas</option>
+                {% for data in datas %}
+                <option value="{{ data }}">{{ data }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+
+        <div class="table-container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Professor</th>
+                        <th>Turma</th>
+                        <th>Componente Curricular</th>
+                        <th>Data de Início</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for plano in planos %}
+                      <tr>
+                        <td class="text-white">{{ plano.professor }}</td>
+                        <td class="text-white">{{ plano.turma }}</td>
+                        <td class="text-white">{{ plano.componente_curricular }}</td>
+                        <td class="text-white"><a href="{{ url_for('view', plano_id=plano.id) }}">{{ plano.data_inicio.strftime('%d/%m/%Y') }}</a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+  
+        <!-- Botões Excluir e Editar -->
+    
+  
+    </div>
+  
+    <!-- Incluir as bibliotecas JavaScript necessárias -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        
+            // Evento de mudança nos comboboxes
+            $(".filtro").change(function() {
+                // Obter os valores selecionados
+                var professor = $("#professor-filter").val();
+                var turma = $("#turma-filter").val();
+                var componente = $("#componente-filter").val();
+                var data = $("#data-filter").val();
+
+                // Filtrar os planos de aula com base nos valores selecionados
+                $(".table tbody tr").each(function() {
+                    var row = $(this);
+                    var professorCol = row.find("td:nth-child(1)");
+                    var turmaCol = row.find("td:nth-child(2)");
+                    var componenteCol = row.find("td:nth-child(3)");
+                    var dataCol = row.find("td:nth-child(4)");
+
+                    // Verificar se os valores correspondem aos filtros selecionados
+                    if (
+                        (professor === "" || professorCol.text() === professor) &&
+                        (turma === "" || turmaCol.text() === turma) &&
+                        (componente === "" || componenteCol.text() === componente) &&
+                        (data === "" || dataCol.text() === data)
+                    ) {
+                        row.show(); // Exibir a linha se corresponder aos filtros
+                    } else {
+                        row.hide(); // Ocultar a linha se não corresponder aos filtros
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

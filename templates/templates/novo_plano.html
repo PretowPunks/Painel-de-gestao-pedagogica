@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Novo Plano de Aula</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #281a4e;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #FFFFF0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #08084b;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #FFFFF0;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 97%;
+            padding: 10px;
+            border: 1px solid #CCCCCC;
+            border-radius: 3px;
+    
+        }
+
+        .form-group textarea {
+            height: 100px;
+        }
+
+        .form-group button {
+            background-color: #FFFFF0;
+            color: #000080;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border-color: #000080;
+            padding: 12px;
+            width: 4cm;
+        }
+
+        .form-group button:hover {
+            background-color: #9fcbf0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Novo Plano de Aula</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="professor">Professor:</label>
+                <input type="text" id="professor" name="professor" required>
+            </div>
+            <div class="form-group">
+                <label for="area_conhecimento">Área de Conhecimento:</label>
+                <input type="text" id="area_conhecimento" name="area_conhecimento" required>
+            </div>
+            <div class="form-group">
+                <label for="componente_curricular">Componente Curricular:</label>
+                <input type="text" id="componente_curricular" name="componente_curricular" required>
+            </div>
+            <div class="form-group">
+                <label for="turma">Turma:</label>
+                <input type="text" id="turma" name="turma" required>
+            </div>
+            <div class="form-group">
+                <label for="objetivos">Objetivos:</label>
+                <textarea id="objetivos" name="objetivos" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="objeto_estudo">Objeto de Estudo:</label>
+                <textarea id="objeto_estudo" name="objeto_estudo" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="habilidades">Habilidades:</label>
+                <textarea id="habilidades" name="habilidades" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="num_aulas">Número de Aulas:</label>
+                <input type="number" id="num_aulas" name="num_aulas" required>
+            </div>
+            <div class="form-group">
+                <label for="data_inicio">Data de Início:</label>
+                <input type="date" id="data_inicio" name="data_inicio" required>
+            </div>
+            <div class="form-group">
+                <label for="atividades">Atividades:</label>
+                <textarea id="atividades" name="atividades" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="recursos">Recursos:</label>
+                <textarea id="recursos" name="recursos" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="avaliacao">Avaliação:</label>
+                <textarea id="avaliacao" name="avaliacao" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="devolutiva">Devolutiva:</label>
+                <textarea id="devolutiva" name="devolutiva" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Salvar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

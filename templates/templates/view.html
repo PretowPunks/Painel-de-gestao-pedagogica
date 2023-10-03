@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalhes do Plano de Aula</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #281a4e;
+            color: #FFFFFF;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        h2 {
+            font-size: 250%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .details {
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .details label {
+            font-weight: bold;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Detalhes do Plano de Aula</h2>
+
+        <div class="details">
+            <label>Professor:</label>
+            <span>{{ plano.professor }}</span>
+        </div>
+
+        <div class="details">
+            <label>Área de conhecimento:</label>
+            <span>{{ plano.area_conhecimento }}</span>
+        </div>
+
+        <div class="details">
+            <label>Componente Curricular:</label>
+            <span>{{ plano.componente_curricular }}</span>
+        </div>
+
+        <div class="details">
+            <label>Turma:</label>
+            <span>{{ plano.turma }}</span>
+        </div>
+
+        <div class="details">
+            <label>Objetivo:</label>
+            <span>{{ plano.objetivos }}</span>
+        </div>
+
+        <div class="details">
+            <label>Objeto de estudo:</label>
+            <span>{{ plano.objeto_estudo }}</span>
+        </div>
+
+        <div class="details">
+            <label>Habilidades:</label>
+            <span>{{ plano.habilidades }}</span>
+        </div>
+
+        <div class="details">
+            <label>Número de aulas:</label>
+            <span>{{ plano.num_aulas }}</span>
+        </div>
+
+        <div class="details">
+            <label>Data de início:</label>
+            <span>{{ plano.data_inicio.strftime('%d/%m/%Y') }}</span>
+        </div>
+
+        <div class="details">
+            <label>Atividades:</label>
+            <span>{{ plano.atividades }}</span>
+        </div>
+
+        <div class="details">
+            <label>Recursos:</label>
+            <span>{{ plano.recursos }}</span>
+        </div>
+
+        <div class="details">
+            <label>Avaliação:</label>
+            <span>{{ plano.avaliacao }}</span>
+        </div>
+
+        <div class="details">
+            <label>Devolutiva:</label>
+            <span>{{ plano.devolutiva }}</span>
+
+        </div class="no-print">
+        <a href="{{ url_for('planos_de_aula') }}" class="btn btn-primary">Voltar</a>
+        <a href="#" class="btn btn-secondary" onclick="window.print()">Imprimir</a>
+        <a href="{{url_for('editar_plano', plano_id=plano.id)}}" class="btn btn-secondary">Editar</a>
+        <form action="{{ url_for('excluir_plano', plano_id=plano.id) }}" method="post" style="display: inline;">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-danger">Excluir</button>
+        </form>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

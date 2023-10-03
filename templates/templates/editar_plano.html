@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Plano de Aula</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #281a4e;
+            color: #FFFFFF;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        h2 {
+            font-size: 250%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .btn-group {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Editar Plano de Aula</h2>
+
+        <form method="POST" action="{{ url_for('editar_plano', plano_id=plano.id) }}">
+            <div class="form-group">
+                <label>Professor:</label>
+                <input type="text" name="professor" value="{{ plano.professor }}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Área de conhecimento:</label>
+                <input type="text" name="area_conhecimento" value="{{ plano.area_conhecimento }}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Componente Curricular:</label>
+                <input type="text" name="componente_curricular" value="{{ plano.componente_curricular }}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Turma:</label>
+                <input type="text" name="turma" value="{{ plano.turma }}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Objetivos:</label>
+                <textarea type="text" name="objetivos" class="form-control">{{ plano.objetivos }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Objeto de estudo:</label>
+                <textarea type="text" name="objeto_estudo" class="form-control">{{ plano.objeto_estudo }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Habilidades:</label>
+                <textarea type="text" name="habilidades" class="form-control">{{ plano.habilidades }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Número de aulas:</label>
+                <input type="number" name="num_aulas" value="{{ plano.num_aulas }}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Data de início:</label>
+                <input type="date" name="data_inicio" value="{{ plano.data_inicio }}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Atividades:</label>
+                <textarea type="text" name="atividades" class="form-control">{{ plano.atividades }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Recursos:</label>
+                <textarea type="text" name="recursos" class="form-control">{{ plano.recursos }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Avaliação:</label>
+                <textarea type="text" name="avaliacao" class="form-control">{{ plano.avaliacao }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Devolutiva:</label>
+                <textarea type="text" name="devolutiva" class="form-control">{{ plano.devolutiva }}</textarea>
+            </div>
+
+            <!-- Adicione os campos restantes do formulário de acordo com os atributos do modelo -->
+
+            <div class="btn-group">
+                <input type="submit" value="Salvar" class="btn btn-primary">
+                <a href="{{ url_for('planos_de_aula') }}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
