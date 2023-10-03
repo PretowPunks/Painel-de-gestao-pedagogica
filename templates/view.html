@@ -41,70 +41,108 @@
 <body>
     <div class="container">
         <h2>Detalhes do Plano de Aula</h2>
+        
 
         <div class="details">
             <label>Professor:</label>
             <span>{{ plano.professor }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Professor" data-text="{{ plano.professor }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Área de conhecimento:</label>
             <span>{{ plano.area_conhecimento }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Área de conhecimento" data-text="{{ plano.area_conhecimento }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Componente Curricular:</label>
             <span>{{ plano.componente_curricular }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Componente Curricular" data-text="{{ plano.componente_curricular }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Turma:</label>
-            <span>{{ plano.turma }}</span>
+            <span>{{ plano.turma }}</span><a href="#" class="play-audio-btn" data-title = "Turma" data-text="{{ plano.turma }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Objetivo:</label>
             <span>{{ plano.objetivos }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Objetivo" data-text="{{ plano.objetivos }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Objeto de estudo:</label>
             <span>{{ plano.objeto_estudo }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Objeto de estudo" data-text="{{ plano.objeto_estudo }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Habilidades:</label>
             <span>{{ plano.habilidades }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Habilidades" data-text="{{ plano.habilidades }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Número de aulas:</label>
             <span>{{ plano.num_aulas }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Número de aulas" data-text="{{ plano.num_aulas }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Data de início:</label>
             <span>{{ plano.data_inicio.strftime('%d/%m/%Y') }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Data de início" data-text="{{ plano.data_inicio }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Atividades:</label>
             <span>{{ plano.atividades }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Atividades" data-text="{{ plano.atividades }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Recursos:</label>
-            <span>{{ plano.recursos }}</span>
+            <span>{{ plano.recursos }}</span><a href="#" class="play-audio-btn" data-title = "Recursos" data-text="{{ plano.recursos }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Avaliação:</label>
             <span>{{ plano.avaliacao }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Avaliação" data-text="{{ plano.avaliacao }}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
         </div>
 
         <div class="details">
             <label>Devolutiva:</label>
             <span>{{ plano.devolutiva }}</span>
+            <a href="#" class="play-audio-btn" data-title = "Devolutiva" data-text="{{ plano.devolutiva}}">
+                <img src="{{ url_for('static', filename='playaudio.jpg') }}" alt="Reproduzir Áudio" style="width: 25px; height: 25px;">
+            </a>
 
         </div class="no-print">
         <a href="{{ url_for('planos_de_aula') }}" class="btn btn-primary">Voltar</a>
@@ -118,5 +156,30 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        // Função para reproduzir áudio
+        function playAudio(title, text) {
+            // Use a síntese de fala do navegador para gerar áudio
+            var speechSynthesis = window.speechSynthesis;
+    
+            // Crie uma mensagem de fala que inclua o título e o conteúdo
+            var message = new SpeechSynthesisUtterance(`${title}. ${text}`);
+            message.lang = 'pt-BR'; // Defina o idioma, se necessário
+    
+            // Reproduza o áudio
+            speechSynthesis.speak(message);
+        }
+    
+        // Adicione um evento de clique a todos os links de reprodução de áudio
+        var playLinks = document.querySelectorAll(".play-audio-btn");
+        playLinks.forEach(function(link) {
+            link.addEventListener("click", function(e) {
+                e.preventDefault(); // Impedir o link de redirecionar
+                var title = link.getAttribute("data-title");
+                var text = link.getAttribute("data-text");
+                playAudio(title, text);
+            });
+        });
+    </script>
 </body>
 </html>
