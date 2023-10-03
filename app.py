@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 
 app = Flask(__name__)
+db = SQLAlchemy(app)
 
 # Configurações e definições do SQLAlchemy, LoginManager, classes de modelos, etc.
 
@@ -15,7 +16,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:#pretowDBApass1989@localho
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your-secret-key'  # Defina uma chave secreta para o Flask
 
-db = SQLAlchemy(app)
+
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
