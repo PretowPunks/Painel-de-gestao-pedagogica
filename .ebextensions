@@ -1,0 +1,31 @@
+files:
+  "/etc/nginx/conf.d/myapp.conf":
+    mode: "000755"
+    owner: root
+    group: root
+    content: |
+      location / {
+        proxy_pass http://127.0.0.1:5000;  # Porta onde sua aplicação Flask está sendo executada
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+      }
+
+option_settings:
+  - option_name: "AWS_SECRET_KEY"
+    value: "your-secret-key"
+  - option_name: "DATABASE_URL"
+    value: "mysql://root:#pretowDBApass1989@localhost/db_eecruzeiro"
+
+container_commands:
+  01_install_dependencies:
+    command: "pip install -r /var/app/current/requirements.txt"
+
+option_settings:
+  - option_name: "RDS_DB_NAME"
+    value: "db_eecruzeiro"
+  - option_name: "RDS_USERNAME"
+    value: "root"
+  - option_name: "RDS_PASSWORD"
+    value: "#pretowDBApass1989"
+  - option_name: "RDS_HOSTNAME"
+    value: "localhost"
